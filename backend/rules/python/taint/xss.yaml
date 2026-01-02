@@ -1,0 +1,31 @@
+schema_version: 1
+id: python.xss.taint
+type: taint
+
+title: Cross-Site Scripting (XSS)
+severity: high
+cwe: CWE-79
+category: xss
+
+sources:
+  - request.args
+  - request.form
+  - request.values
+
+sinks:
+  - flask.render_template
+  - flask.render_template_string
+  - django.shortcuts.render
+  - markupsafe.Markup
+
+sanitizers:
+  - escape
+  - MarkupSafe.escape
+
+confidence: 0.88
+
+description: >
+  User-controlled input is rendered into HTML without escaping.
+
+remediation: >
+  Escape output or rely on template auto-escaping.

@@ -1,0 +1,18 @@
+schema_version: 1
+id: python.jsonpickle.unsafe.load
+type: semantic
+title: Unsafe jsonpickle deserialization
+severity: critical
+cwe: CWE-502
+category: deserialization
+
+match:
+  callee: jsonpickle.decode
+
+confidence: 0.97
+
+description: >
+  jsonpickle.decode can deserialize arbitrary objects leading to RCE.
+
+remediation: >
+  Avoid jsonpickle for untrusted data. Use json.loads instead.

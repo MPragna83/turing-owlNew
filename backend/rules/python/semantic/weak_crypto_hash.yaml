@@ -1,0 +1,18 @@
+schema_version: 1
+id: python.crypto.weak.hash
+type: semantic
+title: Weak cryptographic hash
+severity: medium
+cwe: CWE-327
+category: crypto
+
+match:
+  callee_contains: md5
+
+confidence: 0.8
+
+description: >
+  MD5 is a weak cryptographic hash.
+
+remediation: >
+  Use SHA-256 or stronger algorithms.

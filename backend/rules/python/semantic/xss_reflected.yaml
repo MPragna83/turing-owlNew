@@ -1,0 +1,18 @@
+schema_version: 1
+id: python.xss.reflected
+type: semantic
+title: Reflected XSS
+severity: high
+cwe: CWE-79
+category: xss
+
+match:
+  callee_contains: return
+
+confidence: 0.85
+
+description: >
+  User input is reflected in HTTP responses without sanitization.
+
+remediation: >
+  Escape output or use safe templates.

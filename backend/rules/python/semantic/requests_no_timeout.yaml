@@ -1,0 +1,18 @@
+schema_version: 1
+id: python.semantic.requests.no.timeout
+type: semantic
+title: HTTP request without timeout
+severity: medium
+cwe: CWE-400
+category: dos
+
+match:
+  callee: requests.get
+
+confidence: 0.75
+
+description: >
+  HTTP requests without timeouts may lead to resource exhaustion.
+
+remediation: >
+  Always specify a timeout parameter.

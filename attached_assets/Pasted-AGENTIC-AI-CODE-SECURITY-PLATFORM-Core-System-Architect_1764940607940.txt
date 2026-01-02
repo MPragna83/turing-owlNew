@@ -1,0 +1,69 @@
+AGENTIC AI CODE SECURITY PLATFORM
+Core System Architecture & Microservice Design Document
+1. Executive Overview
+This platform is an enterprise-grade AI-powered static application security testing (SAST) system
+using autonomous agents. The system combines deterministic static analysis with GPT-4o-mini
+powered reasoning to detect, validate, and remediate vulnerabilities in source code.
+2. High-Level Architecture Flow
+Developer/CI → API Gateway → Orchestrator → Agent 1 (Code Parsing) →
+Agent 2 (Rule Engine) → Agent 3 (LLM Reasoning) → Agent 4 (Reporting) →
+CI/CD, Dashboard, Auto-PR
+3. Microservice Deployment Architecture
+1 API Gateway (FastAPI)
+2 Orchestrator Service
+3 Agent-1 Parsing Microservice
+4 Agent-2 Rule Engine Microservice
+5 Agent-3 GPT-4o-mini Reasoning Service
+6 Agent-4 Reporting Service
+7 Vector Database (RAG)
+8 PostgreSQL
+9 Redis
+10 Object Storage (S3/MinIO)
+11 Monitoring Stack (Prometheus + Grafana)
+4. Agent 1 – Code Parsing Agent
+Parses input source code into structured intermediate representations using Tree-sitter.
+1 Multi-language Tree-sitter parsing
+2 AST & Unified AST (UAST) generation
+3 Control Flow Graph (CFG) construction
+4 Data Flow Graph (DFG) construction
+5 Interprocedural symbol resolution
+6 Taint source identification
+5. Agent 2 – Rule Engine Agent
+Executes deterministic and semantic security rules over parsed code.
+1 AST structural pattern matching (Semgrep-style)
+2 Taint-based vulnerability detection
+3 Interprocedural flow tracking
+4 Embedding-based semantic similarity detection
+5 Rule confidence scoring and CWE mapping
+6. Agent 3 – LLM Reasoning Agent (GPT-4o-mini)
+Validates, explains, and generates secure fixes using GPT-4o-mini with RAG.
+1 Context-aware vulnerability validation
+2 RAG-based CWE and fix grounding
+3 False-positive reduction
+4 Patch generation (unified diff)
+5 Patch validation using AST + linters
+7. Agent 4 – Report & Output Agent
+Transforms findings into enterprise-grade outputs and developer integrations.
+1 SARIF 2.1.0 report generation
+2 HTML security dashboards
+3 JSON APIs
+4 GitHub/GitLab PR comments
+5 Automated PRs with validated patches
+6 Jira / Slack alerts
+8. Data & Storage Layer
+1 PostgreSQL: users, projects, rules, findings
+2 Redis: task queues and caching
+3 S3/MinIO: AST, CFG, DFG, HTML reports
+4 Vector DB: CWE, rule embeddings, fix embeddings
+9. Observability & Monitoring
+1 Prometheus metrics for scan time & GPT tokens
+2 Grafana dashboards for cost & performance
+3 Centralized logging for audit & compliance
+10. End-to-End CI/CD Flow
+1 CI triggers POST /scan/start
+2 Agents execute sequentially
+3 High severity fails the pipeline
+4 PR comments and optional Auto-PR generated
+Document Usage
+This document serves as the master system design reference for CEO, CTO, architects, and
+engineering teams.

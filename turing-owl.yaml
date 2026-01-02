@@ -1,0 +1,12 @@
+scan:
+  max_files: 5000
+  max_findings: 10000
+  semantic_timeout_sec: 10
+
+output:
+  format: sarif
+  stable_ids: true
+
+security:
+  allow_exec: false
+  allow_eval: false

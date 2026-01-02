@@ -1,0 +1,5 @@
+name: Turing-Owl Scan
+description: Security scan using Turing-Owl
+runs:
+  using: docker
+  image: Dockerfile

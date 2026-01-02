@@ -1,0 +1,21 @@
+schema_version: 1
+id: python.open.redirect
+type: taint
+title: Open redirect vulnerability
+severity: medium
+cwe: CWE-601
+category: redirect
+
+sources:
+  - request.args
+
+sinks:
+  - redirect
+
+confidence: 0.85
+
+description: >
+  User-controlled redirect targets may allow phishing attacks.
+
+remediation: >
+  Validate redirect destinations.

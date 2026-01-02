@@ -1,0 +1,29 @@
+schema_version: 1
+id: python.path.traversal
+type: taint
+
+title: Path Traversal
+severity: high
+cwe: CWE-22
+category: filesystem
+
+sources:
+  - input
+  - request.args
+
+sinks:
+  - open
+  - os.open
+  - pathlib.Path.open
+
+sanitizers:
+  - os.path.abspath
+  - os.path.normpath
+
+confidence: 0.9
+
+description: >
+  User-controlled file paths may allow directory traversal.
+
+remediation: >
+  Normalize and validate file paths.

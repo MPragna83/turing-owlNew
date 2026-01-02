@@ -1,0 +1,18 @@
+schema_version: 1
+id: python.pickle.unsafe.load
+type: semantic
+title: Unsafe pickle.load
+severity: high
+cwe: CWE-502
+category: deserialization
+
+match:
+  callee_contains: pickle.load
+
+confidence: 0.9
+
+description: >
+  pickle.load on untrusted input leads to arbitrary code execution.
+
+remediation: >
+  Avoid pickle for untrusted data.

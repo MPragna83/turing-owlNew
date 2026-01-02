@@ -1,0 +1,26 @@
+schema_version: 1
+id: python.command.injection.subprocess
+type: taint
+title: Command injection via subprocess
+severity: critical
+cwe: CWE-77
+category: rce
+
+sources:
+  - input
+  - sys.argv
+
+sinks:
+  - subprocess.run
+  - subprocess.Popen
+
+sanitizers:
+  - shlex.quote
+
+confidence: 0.97
+
+description: >
+  User input passed to subprocess execution may lead to command injection.
+
+remediation: >
+  Avoid shell=True and validate arguments.

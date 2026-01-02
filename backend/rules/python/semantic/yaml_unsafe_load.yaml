@@ -1,0 +1,18 @@
+schema_version: 1
+id: python.yaml.unsafe.load
+type: semantic
+title: Unsafe yaml.load
+severity: high
+cwe: CWE-502
+category: deserialization
+
+match:
+  callee_contains: yaml.load
+
+confidence: 0.9
+
+description: >
+  yaml.load without SafeLoader can execute arbitrary code.
+
+remediation: >
+  Use yaml.safe_load.

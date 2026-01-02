@@ -1,0 +1,21 @@
+schema_version: 1
+id: python.command.exec
+type: semantic
+title: OS command execution
+severity: critical
+cwe: CWE-77
+category: rce
+
+match:
+  callee:
+    - os.system
+    - subprocess.call
+    - subprocess.Popen
+
+confidence: 0.9
+
+description: >
+  OS command execution may allow command injection.
+
+remediation: >
+  Avoid shell execution or strictly validate inputs.

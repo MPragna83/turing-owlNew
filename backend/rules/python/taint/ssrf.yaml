@@ -1,0 +1,24 @@
+schema_version: 1
+id: python.ssrf
+type: taint
+title: Server-Side Request Forgery
+severity: high
+cwe: CWE-918
+category: ssrf
+
+sources:
+  - input
+  - request.args
+
+sinks:
+  - requests.get
+  - requests.post
+  - urllib.request.urlopen
+
+confidence: 0.92
+
+description: >
+  User input controls outgoing network requests.
+
+remediation: >
+  Validate URLs and block internal IP ranges.

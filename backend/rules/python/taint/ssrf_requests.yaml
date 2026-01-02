@@ -1,0 +1,18 @@
+schema_version: 1
+id: python.ssrf.requests
+type: semantic
+title: Potential SSRF via user-controlled URL
+severity: high
+cwe: CWE-918
+category: ssrf
+
+match:
+  callee: requests.get
+
+confidence: 0.90
+
+description: >
+  User-controlled URLs passed to HTTP clients may cause SSRF.
+
+remediation: >
+  Validate and restrict outgoing request destinations.
