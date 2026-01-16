@@ -1,0 +1,23 @@
+schema_version: 1
+id: python.insecure.deserialization
+type: taint
+title: Insecure Deserialization
+severity: critical
+cwe: CWE-502
+category: deserialization
+
+sources:
+  - input
+  - request.data
+
+sinks:
+  - jsonpickle.decode
+  - marshal.loads
+
+confidence: 0.95
+
+description: >
+  User-controlled data is deserialized unsafely.
+
+remediation: >
+  Avoid unsafe deserialization libraries.

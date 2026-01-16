@@ -1,0 +1,13 @@
+schema_version: 1
+id: python.semantic.archive.extractall
+type: semantic
+title: Archive extraction without path validation
+severity: high
+cwe: CWE-22
+category: filesystem
+description: |
+  extractall() may allow path traversal if archive contents are untrusted.
+pattern-either:
+  - pattern: zipfile.ZipFile(...).extractall(...)
+  - pattern: tarfile.open(...).extractall(...)
+confidence: 0.9

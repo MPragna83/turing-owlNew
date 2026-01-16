@@ -1,0 +1,19 @@
+schema_version: 1
+id: python.ssl.verify.disabled
+type: semantic
+title: SSL verification disabled
+severity: high
+cwe: CWE-295
+category: ssl
+
+match:
+  any_arg_contains:
+    - verify=False
+
+confidence: 0.9
+
+description: >
+  SSL certificate verification is disabled.
+
+remediation: >
+  Enable SSL certificate verification.

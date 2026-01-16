@@ -1,0 +1,23 @@
+schema_version: 1
+id: python.sql.injection
+type: taint
+title: SQL Injection via user input
+severity: high
+cwe: CWE-89
+category: sql
+
+sources:
+  - input
+  - request.args
+
+sinks:
+  - execute
+  - executemany
+
+confidence: 0.95
+
+description: >
+  SQL queries built from user input may lead to SQL injection.
+
+remediation: >
+  Use parameterized queries.

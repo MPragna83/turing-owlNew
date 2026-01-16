@@ -1,0 +1,18 @@
+schema_version: 1
+id: python.tempfile.mktemp
+type: semantic
+title: Insecure temporary file creation
+severity: high
+cwe: CWE-377
+category: filesystem
+
+match:
+  callee: tempfile.mktemp
+
+confidence: 0.94
+
+description: >
+  tempfile.mktemp is vulnerable to race conditions.
+
+remediation: >
+  Use tempfile.NamedTemporaryFile or mkstemp.

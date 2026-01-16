@@ -1,0 +1,11 @@
+schema_version: 1
+id: python.semantic.tempfile.mktemp
+type: semantic
+title: Insecure temporary file creation
+severity: high
+cwe: CWE-377
+category: filesystem
+description: |
+  tempfile.mktemp() is insecure and may lead to race conditions.
+pattern: tempfile.mktemp(...)
+confidence: 0.9

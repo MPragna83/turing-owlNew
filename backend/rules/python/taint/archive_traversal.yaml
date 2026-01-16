@@ -1,0 +1,23 @@
+schema_version: 1
+id: python.taint.archive.traversal
+type: taint
+title: Archive Extraction Path Traversal
+severity: high
+cwe: CWE-22
+category: filesystem
+
+sources:
+  - input
+  - request.args
+
+sinks:
+  - tarfile.extractall
+  - zipfile.extractall
+
+confidence: 0.92
+
+description: >
+  User-controlled archives may overwrite arbitrary files.
+
+remediation: >
+  Validate archive paths before extraction.

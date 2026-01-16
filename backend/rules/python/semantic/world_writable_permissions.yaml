@@ -1,0 +1,13 @@
+schema_version: 1
+id: python.semantic.permissions.world_writable
+type: semantic
+title: World-writable file permissions
+severity: high
+cwe: CWE-732
+category: filesystem
+description: |
+  Setting permissions to world-writable (777) is insecure.
+pattern-either:
+  - pattern: os.chmod(..., 0o777)
+  - pattern: os.chmod(..., 0777)
+confidence: 0.9

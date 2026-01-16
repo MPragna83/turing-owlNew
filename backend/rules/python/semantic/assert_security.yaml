@@ -1,0 +1,15 @@
+schema_version: 1
+id: python.assert.security
+type: semantic
+title: Assert used for security-sensitive logic
+severity: medium
+cwe: CWE-703
+category: logic
+description: |
+  Using assert for security checks can be bypassed when Python is run with optimizations.
+pattern-either:
+  - pattern: assert user
+  - pattern: assert auth
+  - pattern: assert password
+  - pattern: assert token
+confidence: 0.6

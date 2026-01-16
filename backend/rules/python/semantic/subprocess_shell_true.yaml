@@ -1,0 +1,14 @@
+schema_version: 1
+id: python.subprocess.shell.true
+type: semantic
+title: subprocess called with shell=True
+severity: high
+cwe: CWE-78
+category: rce
+description: |
+  Using shell=True in subprocess calls may allow command injection.
+pattern-inside: |
+  def $FUNC(...):
+    ...
+pattern: subprocess.call(..., shell=True)
+confidence: 0.95

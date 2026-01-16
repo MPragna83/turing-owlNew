@@ -1,0 +1,20 @@
+schema_version: 1
+id: python.eval.usage
+type: semantic
+language: python
+
+title: Use of eval
+severity: critical
+cwe: CWE-95
+category: rce
+
+match:
+  callee: eval
+
+confidence: 0.95
+
+description: >
+  eval allows arbitrary code execution.
+
+remediation: >
+  Remove eval and use safe parsing alternatives.

@@ -1,0 +1,20 @@
+schema_version: 1
+id: python.random.insecure.usage
+type: semantic
+title: Insecure random number generator
+severity: medium
+cwe: CWE-338
+category: crypto
+
+match:
+  callee:
+    - random.random
+    - random.randint
+
+confidence: 0.85
+
+description: >
+  The random module is not suitable for cryptographic purposes.
+
+remediation: >
+  Use secrets module instead.

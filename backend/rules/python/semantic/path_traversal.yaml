@@ -1,0 +1,18 @@
+schema_version: 1
+id: python.semantic.path.traversal
+type: semantic
+title: File path built from user input
+severity: high
+cwe: CWE-22
+category: filesystem
+
+match:
+  callee: open
+
+confidence: 0.88
+
+description: >
+  File paths derived from user input may allow path traversal.
+
+remediation: >
+  Validate paths or use allowlists.

@@ -1,0 +1,13 @@
+schema_version: 1
+id: python.semantic.insecure.random
+type: semantic
+title: Use of non-cryptographic random generator
+severity: medium
+cwe: CWE-338
+category: crypto
+description: |
+  The random module is not suitable for cryptographic or security-sensitive use.
+pattern-either:
+  - pattern: random.random()
+  - pattern: random.randint(...)
+confidence: 0.75

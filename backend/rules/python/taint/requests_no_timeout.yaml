@@ -1,0 +1,23 @@
+schema_version: 1
+id: python.taint.requests.no.timeout
+type: taint
+title: HTTP Request Without Timeout
+severity: medium
+cwe: CWE-400
+category: dos
+
+sources:
+  - input
+  - request.args
+
+sinks:
+  - requests.get
+  - requests.post
+
+confidence: 0.8
+
+description: >
+  Network requests without timeout may cause resource exhaustion.
+
+remediation: >
+  Always specify a timeout.

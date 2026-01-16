@@ -1,0 +1,30 @@
+schema_version: 1
+id: python.command.injection
+type: taint
+
+title: Command Injection
+severity: critical
+cwe: CWE-77
+category: rce
+
+sources:
+  - input
+  - request.args
+  - request.form
+
+sinks:
+  - os.system
+  - subprocess.call
+  - subprocess.Popen
+  - subprocess.run
+
+sanitizers:
+  - shlex.quote
+
+confidence: 0.95
+
+description: >
+  User input is passed to shell execution APIs.
+
+remediation: >
+  Avoid shell execution or sanitize arguments.

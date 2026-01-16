@@ -1,0 +1,18 @@
+schema_version: 1
+id: python.marshal.unsafe.load
+type: semantic
+title: Unsafe marshal deserialization
+severity: critical
+cwe: CWE-502
+category: deserialization
+
+match:
+  callee: marshal.loads
+
+confidence: 0.96
+
+description: >
+  marshal.loads deserializes Python bytecode and can lead to RCE.
+
+remediation: >
+  Never use marshal with untrusted data.

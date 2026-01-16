@@ -1,0 +1,33 @@
+schema_version: 1
+id: python.xml.xxe.taint
+type: taint
+
+title: XML External Entity Injection
+severity: high
+cwe: CWE-611
+category: xml
+
+sources:
+  - request.data
+  - request.files
+  - xml_input
+
+sinks:
+  - xml.etree.ElementTree.parse
+  - xml.etree.ElementTree.fromstring
+  - lxml.etree.parse
+  - lxml.etree.fromstring
+
+sanitizers:
+  - defusedxml
+  - xml.sax.handler.feature_external_ges
+  - xml.sax.handler.feature_external_pes
+
+confidence: 0.92
+
+description: >
+  Untrusted input flows into XML parsing APIs that allow
+  external entity resolution.
+
+remediation: >
+  Use defusedxml or disable external entity resolution.

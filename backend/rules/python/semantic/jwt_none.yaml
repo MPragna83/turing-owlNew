@@ -1,0 +1,18 @@
+schema_version: 1
+id: python.jwt.none.algorithm
+type: semantic
+title: JWT signature verification disabled
+severity: high
+cwe: CWE-347
+category: auth
+
+match:
+  callee: jwt.decode
+
+confidence: 0.9
+
+description: >
+  JWT tokens are decoded without enforcing signature verification.
+
+remediation: >
+  Enforce signature verification and restrict algorithms.

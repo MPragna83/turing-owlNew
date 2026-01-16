@@ -1,0 +1,18 @@
+schema_version: 1
+id: python.pickle.rce
+type: semantic
+title: Unsafe pickle.load
+severity: critical
+cwe: CWE-502
+category: rce
+
+match:
+  callee_contains: pickle.load
+
+confidence: 0.95
+
+description: >
+  pickle.load on untrusted input allows code execution.
+
+remediation: >
+  Do not use pickle on untrusted data.
