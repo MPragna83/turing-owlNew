@@ -8,13 +8,19 @@ permissions:
 
 jobs:
   scan:
+    name: Turing-Owl Static Application Security Testing
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install openai
 
       - name: Run Turing-Owl Scanner
