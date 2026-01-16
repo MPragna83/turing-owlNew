@@ -1,31 +1,42 @@
-name: Turing-Owl SAST
+name: Turing-Owl SAST Security Scan
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
 
 jobs:
-  scan:
+  turing_owl_scan:
+    name: Turing-Owl Static Application Security Testing
     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+    permissions:
+      contents: read
+      security-events: write
 
-      - uses: actions/setup-python@v5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install backend dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install -r backend/requirements.txt
           pip install openai
 
-      - name: Run Scanner
+      - name: Run Turing-Owl scanner
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
-          python -m backend.cli scan . --sarif > result.sarif
+          python -m backend.cli scan $GITHUB_WORKSPACE --sarif > result.sarif
 
-      - name: Upload SARIF
+      - name: Upload SARIF results to GitHub Security
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: result.sarif
