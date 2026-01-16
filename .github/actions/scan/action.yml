@@ -1,0 +1,6 @@
+name: "Turing-Owl Scan"
+description: "Turing-Owl security analysis"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
