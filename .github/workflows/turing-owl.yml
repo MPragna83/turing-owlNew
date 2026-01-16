@@ -24,10 +24,8 @@ jobs:
           pip install openai
 
       - name: Run Turing-Owl Scanner
-        env:
-          PYTHONPATH: ${{ github.workspace }}
         run: |
-          python -m backend.cli scan . --sarif > result.sarif
+          python backend/main.py scan . --sarif > result.sarif
 
       - name: Upload SARIF
         uses: github/codeql-action/upload-sarif@v3
